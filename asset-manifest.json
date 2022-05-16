@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/tableau-extension/static/css/main.ed8ab277.css",
+    "main.js": "/tableau-extension/static/js/main.ade5fdc3.js",
+    "static/js/787.9211be48.chunk.js": "/tableau-extension/static/js/787.9211be48.chunk.js",
+    "static/media/wp_logo.png": "/tableau-extension/static/media/wp_logo.0d4a6ac96c1e4e7f13ed.png",
+    "index.html": "/tableau-extension/index.html",
+    "main.ed8ab277.css.map": "/tableau-extension/static/css/main.ed8ab277.css.map",
+    "main.ade5fdc3.js.map": "/tableau-extension/static/js/main.ade5fdc3.js.map",
+    "787.9211be48.chunk.js.map": "/tableau-extension/static/js/787.9211be48.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ed8ab277.css",
+    "static/js/main.ade5fdc3.js"
+  ]
+}
