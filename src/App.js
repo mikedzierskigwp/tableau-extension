@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Button } from '@tableau/tableau-ui';
 const { tableau } = window;
 
 
