@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/tableau-extension/static/css/main.d8897212.css",
-    "main.js": "/tableau-extension/static/js/main.081a171c.js",
-    "static/js/787.9211be48.chunk.js": "/tableau-extension/static/js/787.9211be48.chunk.js",
-    "static/media/wp_logo.png": "/tableau-extension/static/media/wp_logo.0d4a6ac96c1e4e7f13ed.png",
-    "index.html": "/tableau-extension/index.html",
-    "main.d8897212.css.map": "/tableau-extension/static/css/main.d8897212.css.map",
-    "main.081a171c.js.map": "/tableau-extension/static/js/main.081a171c.js.map",
-    "787.9211be48.chunk.js.map": "/tableau-extension/static/js/787.9211be48.chunk.js.map"
+    "main.css": "/static/css/main.073c9b0a.css",
+    "main.js": "/static/js/main.d750f3a1.js",
+    "static/js/787.e13ebbb1.chunk.js": "/static/js/787.e13ebbb1.chunk.js",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
+    "main.d750f3a1.js.map": "/static/js/main.d750f3a1.js.map",
+    "787.e13ebbb1.chunk.js.map": "/static/js/787.e13ebbb1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8897212.css",
-    "static/js/main.081a171c.js"
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d750f3a1.js"
   ]
 }
