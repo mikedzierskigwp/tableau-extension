@@ -7,6 +7,11 @@ const { tableau } = window;
 function App() {
   useEffect(() => {
     tableau.extensions.initializeAsync();
+
+    tableau.extensions.initializeAsync().then(() => {
+      tableau.extensions.dashboardContent.dashboard.worksheets.map(worksheet =>
+        worksheet.addEventListener(tableau.TableauEventType.FilterChanged, onFilterChange));
+    })
   }, []);
 
   async function updateParameter(param_name, value) {
@@ -40,7 +45,7 @@ function App() {
               filterVals = '{"date_start":"' + filter.minValue.formattedValue + '",' + '"date_end":"' + filter.maxValue.formattedValue + '"}'
             }
 
-            filterVals = filterVals.replace(/,\s*$/, '')
+            filterVals = filterVals.replace(/,\s*$/, '').trim()
 
             updateParameter(filterName, filterVals)
 
@@ -50,6 +55,17 @@ function App() {
 
       }
       ));
+  }
+
+  function onFilterChange(filterChangeEvent) {
+    filterChangeEvent.getFilterAsync().then((filter) => {
+      if (filter.fieldName === 'Abtest') {
+        let paramVal = filter.appliedValues.reduce((acc, val) => acc + val._formattedValue + ',', '').replace(/,\s*$/, '');
+        paramVal = paramVal.substring(paramVal.lastIndexOf('|') + 1).trim()
+        updateParameter('ep_wybrana_wer_bazowa', paramVal)
+      }
+
+    });
   }
 
   return (
