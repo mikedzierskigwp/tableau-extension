@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
+import './App.css';
+
 const { tableau } = window;
 
 
@@ -23,24 +25,26 @@ function App() {
 
         filters.forEach((filter) => {
           // /\s+/g - remove whitespace
-          if (filter.worksheetName === 'VIMP - istotność') {
-            let filterName = "ep" + filter.fieldName.replace(/\s+/g, '_').trim();
+          if (filter.worksheetName === 'API') {
+            let filterName = 'ep' + filter.fieldName.replace(/\s+/g, '_').trim();
             let filterVals;
 
             // /,\s*$/ - remove trailing comma
-            if (filter._filterType === "categorical") {
+            if (filter._filterType === 'categorical') {
               if (!filter.isAllSelected) {
                 filterVals = filter.appliedValues.reduce((acc, val) => acc + val._formattedValue + ',', '');
-                updateParameter(filterName, filterVals.replace(/,\s*$/, ""))
               } else {
                 filterVals = 'All';
-                updateParameter(filterName, filterVals.replace(/,\s*$/, ""))
-
               };
-            } else if (filter._filterType === "range") {
-              filterVals = "min:" + filter.minValue.formattedValue + "," + "max:" + filter.maxValue.formattedValue
-              updateParameter(filterName, filterVals.replace(/,\s*$/, ""))
+            } else if (filter._filterType === 'range') {
+              filterVals = '{"date_start":"' + filter.minValue.formattedValue + '",' + '"date_end":"' + filter.maxValue.formattedValue + '"}'
             }
+
+            filterVals = filterVals.replace(/,\s*$/, '')
+
+            updateParameter(filterName, filterVals)
+
+            console.log([filterName, filterVals])
           };
         });
 
@@ -48,14 +52,9 @@ function App() {
       ));
   }
 
-  async function handleClick() {
-    updateParameter('isNewRequest', Math.random())
-    getValsForAPI()
-  }
-
   return (
     <div>
-      <button onClick={handleClick}>GO</button>
+      <button onClick={getValsForAPI}>GO</button>
     </div>
   );
 
