@@ -11,7 +11,7 @@ function App() {
     tableau.extensions.initializeAsync().then(() => {
       tableau.extensions.dashboardContent.dashboard.worksheets.map(worksheet =>
         worksheet.addEventListener(tableau.TableauEventType.FilterChanged, onFilterChange));
-    })
+    });
   }, []);
 
   async function updateParameter(param_name, value) {
@@ -19,10 +19,10 @@ function App() {
       parameters.forEach((param) => {
         if (param.name === param_name) {
           param.changeValueAsync(value);
-        }
+        };
       });
     });
-  }
+  };
 
   async function getValsForAPI() {
     tableau.extensions.dashboardContent.dashboard.worksheets.map(worksheet =>
@@ -42,31 +42,29 @@ function App() {
                 filterVals = 'All';
               };
             } else if (filter._filterType === 'range') {
-              filterVals = '{"date_start":"' + filter.minValue.formattedValue + '",' + '"date_end":"' + filter.maxValue.formattedValue + '"}'
+              filterVals = '{"date_start":"' + filter.minValue.formattedValue + '",' + '"date_end":"' + filter.maxValue.formattedValue + '"}';
             }
 
-            filterVals = filterVals.replace(/,\s*$/, '').trim()
+            filterVals = filterVals.replace(/,\s*$/, '').trim();
 
-            updateParameter(filterName, filterVals)
+            updateParameter(filterName, filterVals);
 
-            console.log([filterName, filterVals])
+            console.log([filterName, filterVals]);
           };
         });
-
-      }
-      ));
-  }
+      }));
+  };
 
   function onFilterChange(filterChangeEvent) {
     filterChangeEvent.getFilterAsync().then((filter) => {
       if (filter.fieldName === 'Abtest') {
         let paramVal = filter.appliedValues.reduce((acc, val) => acc + val._formattedValue + ',', '').replace(/,\s*$/, '');
-        paramVal = paramVal.substring(paramVal.lastIndexOf('|') + 1).trim()
-        updateParameter('ep_wybrana_wer_bazowa', paramVal)
+        paramVal = paramVal.substring(paramVal.lastIndexOf('|') + 1).trim();
+        updateParameter('ep_wybrana_wer_bazowa', paramVal);
       }
 
     });
-  }
+  };
 
   return (
     <div>
